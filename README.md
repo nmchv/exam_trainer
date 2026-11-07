@@ -60,7 +60,7 @@ npm run build
 
 ## GitHub Pages
 
-В репозитории уже есть workflow `.github/workflows/pages.yml`. В настройках репозитория откройте **Settings → Pages → Build and deployment → GitHub Actions**, затем отправьте изменения в `main` или запустите workflow вручную. Workflow тестирует и собирает каталог `dist/`. Все ресурсы приложения используют относительные пути и работают как с корневым доменом, так и с адресом `user.github.io/repository`.
+GitHub Pages публикует содержимое корня ветки `main` (включая `CNAME` для `exam.nmchv.ru`). В **Settings → Pages → Build and deployment** выберите **Deploy from a branch → main → /(root)**. Отдельный workflow `.github/workflows/pages.yml` запускает тесты и проверяет production-сборку; он не запускает вторую публикацию, чтобы избежать конфликтов с Pages deployment. Приложение использует относительные пути и работает как на корневом домене, так и по адресу `user.github.io/repository`.
 
 В `public/config.js` разрешено хранить только URL и публичный Supabase anon/publishable key. RLS и проверка прав должны оставаться включёнными.
 
