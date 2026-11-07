@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "exams": [
+    {
+      "id": "oge-geography",
+      "title": "ОГЭ по географии",
+      "examType": "oge",
+      "subject": "geography",
+      "year": 2027,
+      "description": "Каркас тренажёра для подготовки к ОГЭ по географии. Банк заданий пока не подключён.",
+      "path": "./public/database/oge/geography",
+      "enabled": true,
+      "demoOnly": true
+    }
+  ]
+}

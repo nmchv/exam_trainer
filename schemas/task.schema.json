@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://exam-trainer.example/schemas/task.schema.json",
+  "title": "Question bank",
+  "type": "object",
+  "required": ["schemaVersion", "examId", "tasks"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "examId": { "type": "string" },
+    "demoOnly": { "type": "boolean" },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "prompt"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "number": { "type": ["integer", "string"] },
+          "type": {
+            "enum": ["single_choice", "multiple_choice", "text", "number", "matching", "ordering", "short_answer", "table", "map"]
+          },
+          "prompt": { "type": "string", "minLength": 1 },
+          "choices": { "type": "array" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "difficulty": { "enum": ["basic", "medium", "advanced"] },
+          "maxScore": { "type": "number", "minimum": 0 },
+          "manualCheck": { "type": "boolean" },
+          "demoOnly": { "type": "boolean" },
+          "answer": {}
+        },
+        "additionalProperties": true
+      },
+      "uniqueItems": true
+    },
+    "theory": { "type": "array" }
+  },
+  "additionalProperties": true
+}

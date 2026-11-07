@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://exam-trainer.example/schemas/registry.schema.json",
+  "title": "Exam registry",
+  "type": "object",
+  "required": ["schemaVersion", "exams"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "exams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "examType", "subject", "year", "path", "enabled"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "examType": { "type": "string" },
+          "subject": { "type": "string" },
+          "year": { "type": "integer" },
+          "path": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "demoOnly": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

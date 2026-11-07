@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://exam-trainer.example/schemas/exam.schema.json",
+  "title": "Exam configuration",
+  "type": "object",
+  "required": ["schemaVersion", "examId", "title", "taskFiles", "taskSelection"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "examId": { "type": "string" },
+    "title": { "type": "string" },
+    "year": { "type": "integer" },
+    "durationMinutes": { "type": "integer", "minimum": 1 },
+    "taskFiles": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "taskSelection": {
+      "type": "object",
+      "required": ["sections"],
+      "properties": {
+        "mode": { "enum": ["random", "fixed"] },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "count"],
+            "properties": {
+              "type": { "type": "string" },
+              "count": { "type": "integer", "minimum": 1 },
+              "maxScore": { "type": "number", "minimum": 0 },
+              "tags": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "scoring": { "type": "object" },
+    "demoOnly": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

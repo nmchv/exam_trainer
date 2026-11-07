@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "examId": "oge-geography",
+  "title": "ОГЭ по географии — учебный демонстрационный режим",
+  "year": 2027,
+  "durationMinutes": 20,
+  "taskFiles": ["tasks/demo.json"],
+  "taskSelection": {
+    "mode": "random",
+    "sections": [
+      { "type": "single_choice", "count": 1, "maxScore": 1 },
+      { "type": "number", "count": 1, "maxScore": 1 },
+      { "type": "matching", "count": 1, "maxScore": 1 },
+      { "type": "ordering", "count": 1, "maxScore": 1 }
+    ]
+  },
+  "scoring": {
+    "maxScore": 4,
+    "gradeScale": [
+      { "min": 0, "max": 1, "grade": 2 },
+      { "min": 2, "max": 2, "grade": 3 },
+      { "min": 3, "max": 3, "grade": 4 },
+      { "min": 4, "max": 4, "grade": 5 }
+    ]
+  },
+  "demoOnly": true
+}

@@ -1,0 +1,85 @@
+:root {
+  color-scheme: dark;
+  --color-background: #08090b;
+  --color-surface: #111318;
+  --color-surface-elevated: #191d24;
+  --color-text-primary: #f2f4f7;
+  --color-text-secondary: #969eab;
+  --color-accent: #5b8def;
+  --color-accent-hover: #a5c4ff;
+  --color-border: #292e38;
+  --color-success: #3ac69a;
+  --color-warning: #e7ae56;
+  --color-danger: #f07d82;
+  --shadow-card: 0 24px 70px rgb(0 0 0 / 19%);
+  font-family: "Manrope", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-background: #f5f7fa;
+  --color-surface: #fff;
+  --color-surface-elevated: #edf1f7;
+  --color-text-primary: #171a20;
+  --color-text-secondary: #687282;
+  --color-accent: #356fd4;
+  --color-accent-hover: #174ca8;
+  --color-border: #dce2eb;
+  --color-success: #148462;
+  --color-warning: #9c690c;
+  --color-danger: #bd4d55;
+  --shadow-card: 0 20px 60px rgb(36 57 88 / 8%);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--color-background);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 87% -12%, color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 34rem),
+    var(--color-background);
+  color: var(--color-text-primary);
+  font-size: 15px;
+  line-height: 1.65;
+  transition: background-color 240ms ease, color 240ms ease;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+button { color: inherit; }
+img, svg { display: block; max-width: 100%; }
+::selection { background: color-mix(in srgb, var(--color-accent) 40%, transparent); }
+:focus-visible { outline: 2px solid var(--color-accent-hover); outline-offset: 3px; }
+
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 12px;
+  left: 12px;
+  padding: 10px 16px;
+  transform: translateY(-160%);
+  border-radius: 8px;
+  background: var(--color-accent);
+  color: #08090b;
+}
+.skip-link:focus { transform: translateY(0); }
+
+.theme-anim, .theme-anim * { transition: background-color 350ms ease, border-color 350ms ease, color 350ms ease !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

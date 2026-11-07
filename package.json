@@ -1,0 +1,13 @@
+{
+  "name": "exam-trainer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Статический модульный тренажёр для подготовки к экзаменам",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "build": "npm run check && node scripts/build.js",
+    "test": "node --test tests/*.test.js",
+    "check": "node scripts/check.js"
+  }
+}

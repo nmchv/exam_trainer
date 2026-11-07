@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "examId": "oge-geography",
+  "demoOnly": true,
+  "tasks": [
+    {
+      "id": "demo-choice-01",
+      "number": 1,
+      "type": "single_choice",
+      "typeLabel": "Выбор одного ответа",
+      "prompt": "Учебная проверка интерфейса: какой из вариантов отмечен как верный?",
+      "choices": [
+        { "key": "А", "value": "a", "label": "Вариант А" },
+        { "key": "Б", "value": "b", "label": "Вариант Б" },
+        { "key": "В", "value": "c", "label": "Вариант В" }
+      ],
+      "answer": "b",
+      "explanation": "В демонстрационных данных верным задан вручную вариант Б.",
+      "checkRules": {},
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "theoryId": "demo-basics",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-number-01",
+      "number": 2,
+      "type": "number",
+      "typeLabel": "Числовой ответ",
+      "prompt": "Учебная проверка интерфейса: введите число 12. Оно используется только для проверки числового поля.",
+      "answer": "12",
+      "checkRules": { "tolerance": 0 },
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "theoryId": "demo-basics",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-text-01",
+      "number": 3,
+      "type": "short_answer",
+      "typeLabel": "Краткий ответ",
+      "prompt": "Учебная проверка интерфейса: напишите слово «пример» (регистр не учитывается).",
+      "answer": "пример",
+      "checkRules": { "ignoreCase": true, "alternatives": ["образец"] },
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "theoryId": "demo-basics",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-multiple-01",
+      "number": 4,
+      "type": "multiple_choice",
+      "typeLabel": "Выбор нескольких ответов",
+      "prompt": "Учебная проверка интерфейса: выберите варианты А и В.",
+      "choices": [
+        { "key": "А", "value": "a", "label": "Вариант А" },
+        { "key": "Б", "value": "b", "label": "Вариант Б" },
+        { "key": "В", "value": "c", "label": "Вариант В" }
+      ],
+      "answer": ["a", "c"],
+      "checkRules": { "unordered": true, "partialCredit": true },
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-matching-01",
+      "number": 5,
+      "type": "matching",
+      "typeLabel": "Соответствие",
+      "prompt": "Учебная проверка интерфейса: распределите условные символы по позициям.",
+      "rows": [
+        { "id": "x", "label": "Символ X" },
+        { "id": "y", "label": "Символ Y" }
+      ],
+      "answer": { "x": "1", "y": "2" },
+      "checkRules": { "partialCredit": true },
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-ordering-01",
+      "number": 6,
+      "type": "ordering",
+      "typeLabel": "Последовательность",
+      "prompt": "Учебная проверка интерфейса: расположите элементы в указанном демонстрационном порядке.",
+      "items": [
+        { "id": "first", "label": "Условный этап 1" },
+        { "id": "second", "label": "Условный этап 2" },
+        { "id": "third", "label": "Условный этап 3" }
+      ],
+      "answer": ["first", "second", "third"],
+      "checkRules": {},
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-table-01",
+      "number": 7,
+      "type": "table",
+      "typeLabel": "Таблица",
+      "prompt": "Учебная проверка интерфейса: заполните поля учебными значениями.",
+      "rows": [
+        { "id": "left", "label": "Левое поле" },
+        { "id": "right", "label": "Правое поле" }
+      ],
+      "answer": { "left": "1", "right": "2" },
+      "checkRules": { "partialCredit": true },
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-map-01",
+      "number": 8,
+      "type": "map",
+      "typeLabel": "Карта — заглушка интерфейса",
+      "prompt": "Учебная проверка интерфейса: выберите условную отметку. Географической карты в этом задании нет.",
+      "choices": [
+        { "key": "А", "value": "marker-a", "label": "Условная отметка А" },
+        { "key": "Б", "value": "marker-b", "label": "Условная отметка Б" }
+      ],
+      "answer": "marker-a",
+      "explanation": "Это только демонстрация обработчика типа map, а не географическое задание.",
+      "checkRules": {},
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "demoOnly": true
+    },
+    {
+      "id": "demo-manual-01",
+      "number": 9,
+      "type": "text",
+      "typeLabel": "Ответ с ручной проверкой",
+      "prompt": "Учебная проверка интерфейса: введите любой текст. Проверка этого примера требует ручной оценки.",
+      "manualCheck": true,
+      "maxScore": 1,
+      "tags": ["demo"],
+      "difficulty": "basic",
+      "demoOnly": true
+    }
+  ],
+  "theory": [
+    {
+      "id": "demo-basics",
+      "title": "Как устроен учебный пример",
+      "summary": "Демонстрационные задания проверяют отображение формы, навигацию и сохранение ответов.",
+      "algorithm": ["Прочитайте условие", "Введите или выберите ответ", "Нажмите «Проверить ответ»"],
+      "commonMistakes": ["Считать тестовый контент реальными заданиями ОГЭ"]
+    }
+  ]
+}
