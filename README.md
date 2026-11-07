@@ -60,7 +60,7 @@ npm run build
 
 ## GitHub Pages
 
-GitHub Pages публикует содержимое корня ветки `main` (включая `CNAME` для `exam.nmchv.ru`). В **Settings → Pages → Build and deployment** выберите **Deploy from a branch → main → /(root)**. Отдельный workflow `.github/workflows/pages.yml` запускает тесты и проверяет production-сборку; он не запускает вторую публикацию, чтобы избежать конфликтов с Pages deployment. Приложение использует относительные пути и работает как на корневом домене, так и по адресу `user.github.io/repository`.
+GitHub Pages публикует содержимое корня ветки `main` (включая `CNAME` для `exam.nmchv.ru`). Для этого поддомена в DNS нужны A-записи `185.199.108.153`, `185.199.109.153`, `185.199.110.153` и `185.199.111.153`; не создавайте CNAME для того же имени одновременно с A-записями. В **Settings → Pages → Build and deployment** выберите **Deploy from a branch → main → /(root)**. Отдельный workflow `.github/workflows/pages.yml` запускает тесты и проверяет production-сборку; он не запускает вторую публикацию, чтобы избежать конфликтов с Pages deployment. Приложение использует относительные пути и работает как на корневом домене, так и по адресу `user.github.io/repository`.
 
 В `public/config.js` разрешено хранить только URL и публичный Supabase anon/publishable key. RLS и проверка прав должны оставаться включёнными.
 
