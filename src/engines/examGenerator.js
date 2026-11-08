@@ -1,3 +1,5 @@
+import { createUuid } from '../utils/uuid.js';
+
 function shuffle(items, random) {
   const result = [...items];
   for (let index = result.length - 1; index > 0; index -= 1) {
@@ -106,7 +108,7 @@ export function generateExam(tasks, specification, options = {}) {
   }
   const orderedTasks = stableDependencyOrder(selected);
   return {
-    id: options.attemptId ?? globalThis.crypto?.randomUUID?.() ?? `attempt-${Date.now()}`,
+    id: options.attemptId ?? createUuid(),
     examId: specification.examId,
     mode: 'exam',
     durationMinutes: specification.durationMinutes,

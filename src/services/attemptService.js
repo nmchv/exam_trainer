@@ -1,17 +1,18 @@
 import { LOCAL_STATE_KEY } from '../config.js';
+import { createUuid } from '../utils/uuid.js';
 import { getSupabaseClient, isSupabaseConfigured } from './supabaseClient.js';
 import { getLocalState, removeLocalState, setLocalState } from './storageManager.js';
 
 const ACTIVE_KEY = 'activeAttempt';
 let remoteSaveQueue = Promise.resolve();
 
-export function createAttempt({ examId, mode, tasks, durationMinutes = null, id = crypto.randomUUID() }) {
+export function createAttempt({ examId, mode, tasks, durationMinutes = null, id = createUuid() }) {
   return {
     id,
     examId,
     mode,
     taskIds: tasks.map((task) => task.id),
-    attemptTaskIds: Object.fromEntries(tasks.map((task) => [task.id, crypto.randomUUID()])),
+    attemptTaskIds: Object.fromEntries(tasks.map((task) => [task.id, createUuid()])),
     tasks,
     answers: {},
     checks: {},
