@@ -27,9 +27,11 @@ export async function signOut() {
 export async function getCurrentUser() {
   const supabase = await getSupabaseClient();
   const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError?.name === 'AuthSessionMissingError') return null;
   if (sessionError) throw sessionError;
   if (!sessionData.session) return null;
   const { data, error } = await supabase.auth.getUser();
+  if (error?.name === 'AuthSessionMissingError') return null;
   if (error) throw error;
   return data.user;
 }
