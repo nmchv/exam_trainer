@@ -60,10 +60,39 @@ function mountPage(content, route = 'home') {
   root.replaceChildren(
     createHeader(route),
     content,
-    element('footer', { className: 'footer' }, ['Exam Trainer · учебный программный каркас'])
+    createFooter()
   );
   const header = root.querySelector('#site-header');
   header?.classList.toggle('is-scrolled', window.scrollY > 8);
+}
+
+function createFooter() {
+  const toTop = element('button', {
+    className: 'footer-button',
+    type: 'button',
+    onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [
+    element('span', { className: 'footer-arrow', 'aria-hidden': 'true' }, ['↑']),
+    'Наверх'
+  ]);
+  const adminButton = element('button', {
+    className: 'footer-button',
+    type: 'button',
+    disabled: true,
+    title: 'Вход для администратора появится позже'
+  }, [
+    'Вход в админку',
+    element('span', { className: 'soon' }, ['Скоро'])
+  ]);
+  return element('footer', { className: 'footer' }, [
+    element('div', { className: 'footer-inner' }, [
+      element('div', { className: 'footer-brand' }, [
+        element('strong', {}, ['Exam Trainer']),
+        element('span', {}, ['Подготовка к экзаменам без суеты'])
+      ]),
+      element('div', { className: 'footer-actions' }, [toTop, adminButton])
+    ])
+  ]);
 }
 
 function navigateToHome() {

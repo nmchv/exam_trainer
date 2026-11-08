@@ -11,14 +11,25 @@ export function renderHome({ registry, progress, savedAttempt, onResume, statsOv
     element('section', { className: 'hero' }, [
       element('div', { className: 'hero-content' }, [
         element('span', { className: 'eyebrow' }, ['Подготовка в своём темпе']),
-        element('h1', {}, ['Понятный путь к уверенному результату']),
+        element('h1', {}, [
+          'Понятный путь к ',
+          element('span', { className: 'hero-highlight' }, ['уверенному результату'])
+        ]),
         element('p', {}, ['Тренируйтесь на вариантах задания №1 по географии и возвращайтесь к сложным вопросам. Новые задания будут добавляться по мере подготовки банка.']),
         element('div', { className: 'hero-actions' }, [
           element('a', { className: 'button button-primary', href: '#/exams' }, ['Выбрать экзамен']),
           savedAttempt ? element('button', { className: 'button button-quiet', onClick: onResume }, ['Продолжить попытку']) : null
         ])
       ]),
-      element('div', { className: 'hero-aside', 'aria-hidden': 'true' }, ['E'])
+      element('div', { className: 'hero-art', 'aria-hidden': 'true' }, [
+        element('span', { className: 'hero-art-orbit hero-art-orbit-outer' }),
+        element('span', { className: 'hero-art-orbit hero-art-orbit-inner' }),
+        element('span', { className: 'hero-art-core' }, ['✦']),
+        element('span', { className: 'hero-art-spark hero-art-spark-one' }, ['✦']),
+        element('span', { className: 'hero-art-spark hero-art-spark-two' }, ['•']),
+        element('span', { className: 'hero-art-bubble hero-art-bubble-top' }, ['твой темп']),
+        element('span', { className: 'hero-art-bubble hero-art-bubble-bottom' }, ['шаг за шагом'])
+      ])
     ]),
     element('section', { className: 'section-block' }, [
       element('div', { className: 'section-title' }, [
