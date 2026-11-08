@@ -7,3 +7,4 @@ dist/
 .astro/
 coverage/
 supabase/private/
+supabase/.temp/
