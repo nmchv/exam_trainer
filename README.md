@@ -36,17 +36,18 @@ npm run build
 
 ## Supabase
 
-1. Создайте проект Supabase и примените миграцию:
+1. Supabase URL и публичный ключ проекта уже указаны в `public/config.js`. Установите CLI, войдите и примените миграцию к тому же проекту:
 
    ```sh
-   supabase link --project-ref YOUR_PROJECT_REF
+   brew install supabase/tap/supabase
+   supabase login
+   supabase link --project-ref umpqeilcsopqxymyzuvv
    supabase db push
    ```
 
    Либо выполните файл `supabase/migrations/20261107000000_initial.sql` через SQL Editor. `supabase/schema.sql` — psql-обёртка для той же миграции.
-2. Укажите URL проекта и публичный `anon`/publishable key в `public/config.js`. Это клиентские значения. **Не помещайте в frontend, репозиторий или Pages `service_role` key.**
-3. В Supabase Auth добавьте опубликованный Pages URL и локальный URL в список разрешённых Redirect URLs.
-4. Задайте серверные секреты для Edge Functions в настройках проекта (Supabase устанавливает `SUPABASE_URL`, `SUPABASE_ANON_KEY` и `SUPABASE_SERVICE_ROLE_KEY` автоматически) и опубликуйте функции:
+2. В **Authentication → URL Configuration** добавьте в Redirect URLs адрес сайта `https://exam.nmchv.ru/**` и адрес локальной разработки `http://127.0.0.1:4173/**`. Для регистрации включите подтверждение email или выключите его в настройках Auth.
+3. Supabase автоматически предоставляет Edge Functions переменные `SUPABASE_URL`, `SUPABASE_ANON_KEY` и `SUPABASE_SERVICE_ROLE_KEY`; вручную помещать service role key в приложение или репозиторий не нужно. Опубликуйте функции из корня проекта:
 
    ```sh
    supabase functions deploy check-answer
@@ -54,9 +55,12 @@ npm run build
    supabase functions deploy get-statistics
    ```
 
-5. Реальные ответы добавляйте только в `task_answer_keys`, а шкалы оценивания — в `exam_scoring_rules`, через доверенный административный процесс. Таблицы закрыты для `anon` и `authenticated`; Edge Functions используют серверный ключ только на сервере Supabase. Edge Functions не проверены против реального проекта в рамках этой версии.
+4. Импортируйте ключи задания 1 через **SQL Editor** из локального файла `supabase/private/task01-answer-keys.sql`. Файл игнорируется Git и не попадает на сайт. Правильные ответы и пояснения хранятся только в закрытой таблице `task_answer_keys`; Edge Functions используют серверный ключ только на стороне Supabase.
+5. Откройте **Профиль** на сайте, создайте аккаунт и войдите. Попытки реальных заданий требуют авторизации; после входа ответы синхронизируются автоматически.
 
-До появления настоящего банка публичный fixture `public/database/oge/geography/tasks/demo.json` содержит ответы и помечен `demoOnly`. Это искусственные данные для тестирования и **не шаблон публикации реальных ответов**. Загрузчик отклоняет ответы в любом JSON-банке без флага `demoOnly: true`.
+Активный банк задания №1 содержит только формулировки и варианты ответов. Ключи и пояснения импортируются в Supabase через локальный файл `supabase/private/task01-answer-keys.sql`, который исключён из Git. Примените его через **Supabase Dashboard → SQL Editor** после миграции. Не публикуйте этот файл и не добавляйте `service_role` key в браузер или репозиторий. Старый синтетический fixture `public/database/oge/geography/tasks/demo.json` оставлен только для тестов интерфейса и не подключён к активному экзамену.
+
+После входа в аккаунт ответы сохраняются в Supabase автоматически; проверка и завершение попытки выполняются Edge Functions. Для локального сайта добавьте фактический origin разработки в **Authentication → URL Configuration → Redirect URLs**. Убедитесь, что пользователь вошёл через страницу «Профиль».
 
 ## GitHub Pages
 

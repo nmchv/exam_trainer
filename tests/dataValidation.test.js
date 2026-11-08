@@ -28,6 +28,21 @@ test('validates demo bank while rejecting public real answer keys', async () => 
   }, 'real'), /ответ.*только в Supabase/i);
 });
 
+test('loads 20 public first-task variants without answer keys or explanations', async () => {
+  const data = JSON.parse(await readFile(new URL('../public/database/oge/geography/tasks/task01_variants.json', import.meta.url), 'utf8'));
+  const tasks = validateTaskBank(data, 'oge-geography');
+  const exam = JSON.parse(await readFile(new URL('../public/database/oge/geography/exam.json', import.meta.url), 'utf8'));
+  const registry = JSON.parse(await readFile(new URL('../public/database/registry.json', import.meta.url), 'utf8'));
+  assert.equal(tasks.length, 20);
+  assert.equal(new Set(tasks.map((task) => task.id)).size, 20);
+  assert.ok(tasks.every((task) => task.type === 'single_choice' && task.number === 1));
+  assert.ok(tasks.every((task) => task.choices.length === 4));
+  assert.ok(tasks.every((task) => !Object.hasOwn(task, 'answer') && !Object.hasOwn(task, 'explanation')));
+  assert.deepEqual(exam.taskFiles, ['tasks/task01_variants.json']);
+  assert.deepEqual(exam.taskSelection.sections, [{ type: 'single_choice', count: 1, maxScore: 1 }]);
+  assert.equal(registry.exams.find((item) => item.id === 'oge-geography').demoOnly, undefined);
+});
+
 test('rejects duplicate task identifiers and unsupported schema versions', () => {
   const task = { id: 'same', examId: 'demo', type: 'text', prompt: 'Synthetic task' };
   assert.throws(() => validateTaskBank({

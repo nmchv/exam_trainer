@@ -12,7 +12,7 @@ export function renderHome({ registry, progress, savedAttempt, onResume, statsOv
       element('div', { className: 'hero-content' }, [
         element('span', { className: 'eyebrow' }, ['Подготовка в своём темпе']),
         element('h1', {}, ['Понятный путь к уверенному результату']),
-        element('p', {}, ['Тренируйтесь по темам, проходите варианты и возвращайтесь к сложным заданиям. Сейчас доступен демонстрационный каркас ОГЭ по географии.']),
+        element('p', {}, ['Тренируйтесь на вариантах задания №1 по географии и возвращайтесь к сложным вопросам. Новые задания будут добавляться по мере подготовки банка.']),
         element('div', { className: 'hero-actions' }, [
           element('a', { className: 'button button-primary', href: '#/exams' }, ['Выбрать экзамен']),
           savedAttempt ? element('button', { className: 'button button-quiet', onClick: onResume }, ['Продолжить попытку']) : null
@@ -43,7 +43,7 @@ export function renderHome({ registry, progress, savedAttempt, onResume, statsOv
       ])
     ]),
     element('section', { className: 'section-block' }, [
-      element('div', { className: 'notice-banner' }, ['Важно: демонстрационные задания нужны для проверки программного каркаса. Это не реальные задания ОГЭ.'])
+      element('div', { className: 'notice-banner' }, ['Сейчас доступны 20 авторских тренировочных вариантов задания №1 по теме происхождения горных пород.'])
     ])
   ]);
 }

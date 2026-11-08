@@ -17,7 +17,7 @@ export function renderExams(exams, onStart) {
         element('p', {}, [exam.description]),
         element('div', { className: 'hero-actions' }, [
           element('button', { className: 'button button-primary', onClick: () => onStart(exam) }, ['Начать тренировку']),
-          element('button', { className: 'button', onClick: () => onStart(exam, true) }, ['Пробный вариант'])
+          element('button', { className: 'button', onClick: () => onStart(exam, true) }, ['Случайный вариант задания №1'])
         ])
       ])
     ))

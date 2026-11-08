@@ -39,7 +39,7 @@ export function renderTraining({ tasks, mistakeCount, onGenerate }) {
     element('label', { className: 'check-label' }, [
       element('input', { type: 'checkbox', name: 'randomize', checked: true }), 'Перемешать задания'
     ]),
-    element('p', { className: 'metric-hint' }, [`Доступно демонстрационных заданий: ${tasks.length}.`]),
+    element('p', { className: 'metric-hint' }, [`Доступно заданий в выбранном банке: ${tasks.length}.`]),
     element('button', { className: 'button button-primary', type: 'submit' }, ['Собрать тренировку'])
   ]);
   return element('main', { className: 'page-shell page-enter', id: 'main' }, [

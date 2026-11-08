@@ -147,6 +147,9 @@ async function startPractice(exam, mode = 'practice') {
   try {
     loadError = '';
     const data = await loadData(exam);
+    if (data.tasks.some((task) => !task.demoOnly) && !currentUser) {
+      throw new Error('Войдите или создайте аккаунт в разделе «Профиль», чтобы сохранять и проверять реальные задания.');
+    }
     if (mode === 'exam') {
       const generated = generateExam(data.tasks, {
         ...data.config.taskSelection,

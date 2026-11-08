@@ -7,10 +7,9 @@
       "examType": "oge",
       "subject": "geography",
       "year": 2027,
-      "description": "Каркас тренажёра для подготовки к ОГЭ по географии. Банк заданий пока не подключён.",
+      "description": "Тренировка по 20 вариантам задания №1: происхождение горных пород.",
       "path": "./public/database/oge/geography",
-      "enabled": true,
-      "demoOnly": true
+      "enabled": true
     }
   ]
 }
