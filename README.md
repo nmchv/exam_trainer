@@ -41,12 +41,12 @@ npm run build
    ```sh
    brew install supabase/tap/supabase
    supabase login
-   supabase link --project-ref umpqeilcsopqxymyzuvv
+   supabase link --project-ref wdijrafblddfcqfbtfmr
    supabase db push
    ```
 
-   Либо выполните файл `supabase/migrations/20261107000000_initial.sql` через SQL Editor. `supabase/schema.sql` — psql-обёртка для той же миграции.
-2. В **Authentication → URL Configuration** добавьте в Redirect URLs адрес сайта `https://exam.nmchv.ru/**` и адрес локальной разработки `http://127.0.0.1:4173/**`. Для регистрации включите подтверждение email или выключите его в настройках Auth.
+   Затем выполните `supabase/migrations/20261115000000_account_core.sql` из репозитория nmchv/account через SQL Editor кабинета. Общий профиль использует `profiles.id = auth.users.id`.
+2. В **Authentication → URL Configuration** добавьте в Redirect URLs адреса `https://exam.nmchv.ru/**`, `https://www.geotrainer.nmchv.ru/**` и локальной разработки `http://127.0.0.1:4173/**`. Для регистрации включите подтверждение email или выключите его в настройках Auth.
 3. Supabase автоматически предоставляет Edge Functions переменные `SUPABASE_URL`, `SUPABASE_ANON_KEY` и `SUPABASE_SERVICE_ROLE_KEY`; вручную помещать service role key в приложение или репозиторий не нужно. Опубликуйте функции из корня проекта:
 
    ```sh
